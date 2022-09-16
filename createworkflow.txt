@@ -1,0 +1,68 @@
+arn:aws:iam::848186050993:role/MediaConvertRole
+
+1--> Steps to follow to create a automatic workflow to transcode video 
+https://github.com/aws-samples/aws-media-services-vod-automation/blob/master/MediaConvert-WorkflowWatchFolderAndNotification/README-tutorial.md
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+2--> Make change function in .py function 
+def lambda_handler(event, context): 
+
+https://stackoverflow.com/questions/48266106/missing-handler-error-in-aws-lambda
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+3--> Bucket permision will consist ListBucket
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPublicRead",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::test-bucket-video-converter/*"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:ListBucket",
+            "Resource": "arn:aws:s3:::test-bucket-video-converter"
+        }
+    ]
+}
+
+4--> Make change configuration for ACLs
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+5--> In CORS configuration paste
+
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "PUT",
+            "POST",
+            "HEAD",
+            "DELETE"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [],
+        "MaxAgeSeconds": 3000
+    }
+]
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+6--> while adding trigger please add suffix 
+     in my case .mp4
+https://www.norrapscm.com/posts/2021-02-08-generate-thumbnails-in-lambda-from-s3-with-ffmpeg/#section-1
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

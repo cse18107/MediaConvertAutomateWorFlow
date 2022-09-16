@@ -1,0 +1,7 @@
+1. IAM Role name for mediaConvert is ( MediaConvertRoleTus )
+2. ARN for IAM role of MediaConvertRoleTus is ( arn:aws:iam::848186050993:role/MediaConvertRoleTus )
+3. IAM Role name for Lambda function is ( VODLambdaRoleTus )
+4. Lambda policy name is ( VODLambdaPolicyTus )
+5. ARN for IAM role of Lamdba function is ( arn:aws:iam::848186050993:role/VODLambdaRoleTus ) 
+6. Lambda function name is ( VODLambdaConvertTus )
+7. Lambda function ARN is ( arn:aws:lambda:ap-southeast-1:848186050993:function:VODLambdaConvertTus )
